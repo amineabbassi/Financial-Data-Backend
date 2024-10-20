@@ -8,9 +8,6 @@ ENV PYTHONUNBUFFERED=1
 # Set the working directory in the container
 WORKDIR /app
 
-# Copy the .env file into the container
-COPY .env /app/
-
 # Install system dependencies
 RUN apt-get update \
     && apt-get install -y --no-install-recommends gcc libpq-dev \
