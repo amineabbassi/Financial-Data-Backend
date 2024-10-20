@@ -1,5 +1,8 @@
 # Blackhouse Trial
 
+
+GO LIVE : https://financial-data-backend.onrender.com
+
 ## Description
 
 Blackhouse Trial is a Django application designed to provide stock price predictions using a linear regression model. The application fetches historical stock data, backtest the data, performs predictions, and generates performance reports that compare predicted stock prices against actual prices.
