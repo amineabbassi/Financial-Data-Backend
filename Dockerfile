@@ -2,12 +2,14 @@
 FROM python:3.12.5-slim
 
 # Set environment variables
-# This prevents Python from writing .pyc files to disc and allows output to be shown in the logs
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
 # Set the working directory in the container
 WORKDIR /app
+
+# Copy the .env file into the container
+COPY .env /app/
 
 # Install system dependencies
 RUN apt-get update \
@@ -19,13 +21,10 @@ RUN apt-get update \
 COPY requirements.txt /app/
 
 # Install Python dependencies
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir --no-warn-script-location -r requirements.txt
 
 # Copy the rest of your Django project files into the container
 COPY . /app/
-
-# Collect static files (optional, if you have static files)
-RUN python manage.py collectstatic --noinput
 
 # Expose the port your app runs on
 EXPOSE 8000
